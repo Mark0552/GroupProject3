@@ -6,6 +6,8 @@ import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar'
 import Home from './components/home'
+import List from './components/list'
+import GuestList from './components/guest-list'
 
 class App extends Component {
   constructor() {
