@@ -6,6 +6,8 @@ import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar'
 import Home from './components/home'
+import WeddingCheckList from './components/WeddingCheckList';
+
 
 class App extends Component {
   constructor() {
@@ -75,7 +77,11 @@ class App extends Component {
           render={() =>
             <Signup/>}
         />
-
+        <Route
+          path="/WeddingCheckList"
+          render={() =>
+            <WeddingCheckList/>}
+        />
       </div>
     );
   }
