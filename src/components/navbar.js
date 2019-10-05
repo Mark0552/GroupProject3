@@ -41,6 +41,9 @@ class Navbar extends Component {
                                     <Link to="/" className="btn btn-link text-secondary">
                                         <span className="text-secondary">Home</span>
                                     </Link>
+                                    <Link to="/WeddingCheckList" className="btn btn-link">
+                                        <span className="text-secondary">Wedding CheckList</span>
+                                    </Link>
                             </section>
                         ) : (
                                 <section className="navbar-section">
@@ -53,6 +56,7 @@ class Navbar extends Component {
                                     <Link to="/signup" className="btn btn-link">
                                         <span className="text-secondary">Sign Up</span>
                                     </Link>
+                                    
                                 </section>
                             )}                    
                 </header>
