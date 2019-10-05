@@ -44,6 +44,9 @@ class Navbar extends Component {
                                     <Link to="/WeddingCheckList" className="btn btn-link">
                                         <span className="text-secondary">Wedding CheckList</span>
                                     </Link>
+                                    <Link to="/guestlist" className="btn btn-link">
+                                        <span className="text-secondary">Guest List</span>
+                                    </Link>
                             </section>
                         ) : (
                                 <section className="navbar-section">
