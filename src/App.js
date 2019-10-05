@@ -7,6 +7,7 @@ import LoginForm from './components/login-form'
 import Navbar from './components/navbar'
 import Home from './components/home'
 import WeddingCheckList from './components/WeddingCheckList';
+import GuestList from './components/guest-list';
 
 
 class App extends Component {
@@ -81,6 +82,11 @@ class App extends Component {
           path="/WeddingCheckList"
           render={() =>
             <WeddingCheckList/>}
+        />
+        <Route
+          path="/guestlist"
+          render={() =>
+            <GuestList/>}
         />
       </div>
     );
