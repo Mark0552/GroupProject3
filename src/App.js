@@ -8,6 +8,7 @@ import Navbar from './components/navbar'
 import Home from './components/home'
 import WeddingCheckList from './components/WeddingCheckList';
 import GuestList from './components/guest-list';
+import Budget from './components/budget/Budget'
 
 
 class App extends Component {
@@ -87,6 +88,11 @@ class App extends Component {
           path="/guestlist"
           render={() =>
             <GuestList/>}
+        />
+         <Route
+          path="/budget"
+          render={() =>
+            <Budget/>}
         />
       </div>
     );
