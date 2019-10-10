@@ -1,0 +1,10 @@
+.btn-group {
+    float: left; 
+}
+
+.modal-content {
+    width: 850px;  
+    overflow-x: auto; 
+    overflow-y: scroll;  
+
+}
