@@ -1,14 +1,16 @@
 import React, { Component } from "react"; 
 import {BootstrapTable, TableHeaderColumn} from "react-bootstrap-table"; 
 import "../../node_modules/react-bootstrap-table/css/react-bootstrap-table.css"; 
+import "./guest-list.css"; 
 
-function onInsertRow(row) {
-let newRow = "; "
+//
+function onInsertRow(guest) {
+let newGuest = "; "
 
-for (const prop in row) {
-    newRow += prop + "" + row[prop]
+for (const prop in guest) {
+    newGuest += prop + "" + guest[prop]
 }
-alert("New guest added" + newRow)
+alert("New guest added" + newGuest)
 }
 
 function onDeleteRow(rowKeys) {
@@ -45,10 +47,8 @@ class List extends Component {
                                 options={options}
                                 cellEdit={cellEditProp}
             >               
-            <TableHeaderColumn isKey dataField="id">
-                ID    
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="name">
+            
+            <TableHeaderColumn isKey dataField="name">
                 Name
             </TableHeaderColumn>
             <TableHeaderColumn dataField="address">
