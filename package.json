@@ -14,12 +14,14 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "react": "^16.2.0",
+    "react-bootstrap": "^1.0.0-beta.14",
     "react-bootstrap-table": "^4.3.1",
     "react-dom": "^16.2.0",
     "react-icons": "^3.7.0",
     "react-particles-js": "^2.7.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^3.2.0",
+    "react-scripts": "^1.1.5",
+    "reactstrap": "^8.0.1",
     "spectre.css": "^0.5.0",
     "uuid": "^3.3.3"
   },
@@ -32,20 +34,13 @@
     "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\""
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "babel-plugin-react-html-attrs": "^2.1.0",
     "concurrently": "^3.5.1",
     "nodemon": "^1.17.5"
   },
-  "proxy": "http://localhost:8080",
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "proxy": "http://localhost:8080/"
 }

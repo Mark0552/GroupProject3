@@ -5,6 +5,7 @@ import ExpenseList from './ExpenseList'
 import Alert from './Alert'
 import uuid from "uuid/v4";
 import Particles from 'react-particles-js';
+import axios from 'axios'
 // localStorage.getItem('item.name');
 // localStorage.setItem('item.name')
 
@@ -17,21 +18,21 @@ import Particles from 'react-particles-js';
 // ******* particles *******
 const particleOpt = {
     particles: {
-      number: {
-        value: 850,
-        density: {
-          enable: true,
-          value_area: 700
+        number: {
+            value: 850,
+            density: {
+                enable: true,
+                value_area: 700
+            }
         }
-      }
     }
-  }
+}
 
 // ******* initial expense*******
 
-const initialExpenses = localStorage.getItem("expenses")? JSON.parse(localStorage.getItem("expenses")) : [];
+const initialExpenses = localStorage.getItem("expenses") ? JSON.parse(localStorage.getItem("expenses")) : [];
 
-const Budget = () => {
+const Budget = (props) => {
     // ****** state value *******
     // all expenses, add expense
     const [expenses, setExpenses] = useState(initialExpenses);
@@ -46,15 +47,15 @@ const Budget = () => {
     const [alert, setAlert] = useState({ show: false })
 
     // edit 
-    const [edit,setEdit] = useState(false)
+    const [edit, setEdit] = useState(false)
 
     // edit item
-    const [id, setId] = useState (0);
+    const [id, setId] = useState(0);
 
-// ****** use effect*******
-useEffect(() => {
-    localStorage.setItem('expenses',JSON.stringify(expenses));
-}, [expenses]);
+    // ****** use effect*******
+    useEffect(() => {
+        localStorage.setItem('expenses', JSON.stringify(expenses));
+    }, [expenses]);
     // ****** functionality *******
 
     // handle charge
@@ -79,21 +80,32 @@ useEffect(() => {
     const handleSubmit = e => {
         e.preventDefault();
         if (charge !== '' && amount > 0) {
-        if (edit) {
-let tempExpenses = expenses.map(item => {
-    return item.id === id? {...item,charge,amount} :item
-});
-setExpenses(tempExpenses);
-setEdit(false);
-handleAlert({ type: 'success', text: "Item edited" })
-        }
-        else {
-            const singleExpense = { id: uuid(), charge, amount };
-            setExpenses([...expenses, singleExpense])
-            handleAlert({ type: 'success', text: "Item added" })
-        }            
+            if (edit) {
+                let tempExpenses = expenses.map(item => {
+                    return item.id === id ? { ...item, charge, amount } : item
+                });
+                setExpenses(tempExpenses);
+                setEdit(false);
+                handleAlert({ type: 'success', text: "Item edited" })
+            }
+            else {
+                const singleExpense = { id: uuid(), charge, amount };
+                setExpenses([...expenses, singleExpense])
+                handleAlert({ type: 'success', text: "Item added" })
+                axios.post('/user/budget/' , singleExpense)
+                    .then(response => {
+                        // console.log(response)
+                        if (!response.data.errmsg) {
+                            alert("budget post successful");                            
+                        }
+                    }).catch(error => {
+                        console.log('budget post error: ')
+                        console.log(error)
+                    })
+            }
             setCharge("");
             setAmount("");
+            
         }
         else {
             // handle alert called
@@ -104,23 +116,22 @@ handleAlert({ type: 'success', text: "Item edited" })
     // clear all items
     const clearItems = () => {
         setExpenses([])
-        handleAlert({type:"danger", text:" All items deleted"})
+        handleAlert({ type: "danger", text: " All items deleted" })
 
     }
 
     // handle delele
     const handleDelete = (id) => {
-        let tempExpenses =expenses.filter(item => item.id !== id);
+        let tempExpenses = expenses.filter(item => item.id !== id);
         setExpenses(tempExpenses)
-        handleAlert({type:"danger", text:"item deleted"})
-        
+        handleAlert({ type: "danger", text: "item deleted" })
 
     }
 
     // handle edit
     const handleEdit = (id) => {
-        let expense =expenses.find(item => item.id === id)
-        let {charge, amount} = expense;
+        let expense = expenses.find(item => item.id === id)
+        let { charge, amount } = expense;
         setCharge(charge);
         setAmount(amount);
         setEdit(true);
@@ -129,9 +140,9 @@ handleAlert({ type: 'success', text: "Item edited" })
     }
 
     return <div>
-            <Particles
-    params={particleOpt}
-  />
+        <Particles
+            params={particleOpt}
+        />
         {alert.show && <Alert type={alert.type} text={alert.text} />}
         <Alert />
         <h1>Budget</h1>
@@ -157,8 +168,8 @@ handleAlert({ type: 'success', text: "Item edited" })
         </span>
         </h1>
         <Particles
-    params={particleOpt}
-  /> 
+            params={particleOpt}
+        />
     </div>
 
 };
