@@ -32,7 +32,7 @@ class Navbar extends Component {
         console.log(this.props);
 
         return (
-            <div class="login-register-container">
+            <div className="login-register-container">
                 <header className="navbar App-header" id="nav-container">                    
                         {loggedIn ? (
                             <section className="navbar-section">

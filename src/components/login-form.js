@@ -8,6 +8,7 @@ class LoginForm extends Component {
         this.state = {
             username: '',
             password: '',
+            todos: [],
             redirectTo: null
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -37,6 +38,7 @@ class LoginForm extends Component {
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
+                        todos: response.data.todos,
                         username: response.data.username
                     })
                     // update the state to redirect to home
