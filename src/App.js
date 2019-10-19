@@ -6,7 +6,7 @@ import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar'
 import Home from './components/home'
-import GuestList from './components/guest-list';
+import GuestList from './components/guestlist';
 import Budget from './components/budget/Budget';
 import ChecklistCard from './components/checklist/ChecklistCard';
 

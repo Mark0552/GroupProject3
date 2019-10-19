@@ -1,19 +1,20 @@
 import React, { Component } from "react"; 
 import {BootstrapTable, TableHeaderColumn} from "react-bootstrap-table"; 
-import "../../node_modules/react-bootstrap-table/css/react-bootstrap-table.css"; 
+import "./guest-list.css"; 
 
-function onInsertRow(row) {
-let newRow = "; "
+function onInsertRow(guest) {
+let newGuest = "; "
 
-for (const prop in row) {
-    newRow += prop + "" + row[prop]
+for (const prop in guest) {
+    newGuest += prop + "" + guest[prop]
 }
-alert("New guest added" + newRow)
+alert("New guest added" + newGuest)
 }
 
 function onDeleteRow(rowKeys) {
 alert("Guest deleted" + rowKeys) 
 }
+
 
 class List extends Component {
 
@@ -27,7 +28,8 @@ class List extends Component {
         }; 
         const options = {
             afterInsertRow: onInsertRow, 
-            afterDeleteRow: onDeleteRow
+            afterDeleteRow: onDeleteRow, 
+            
         }; 
 
         const cellEditProp = {
@@ -39,16 +41,17 @@ class List extends Component {
             <div>
             <h1>Guest List</h1>    
             <BootstrapTable data={this.props.data}
-                                selectRow={selectRowProp}
-                                insertRow={true}
-                                deleteRow={true}
-                                options={options}
-                                cellEdit={cellEditProp}
-            >               
-            <TableHeaderColumn isKey dataField="id">
-                ID    
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="name">
+                            selectRow={selectRowProp}
+                            insertRow={true}
+                            deleteRow={true}
+                            options={options}
+                            cellEdit={cellEditProp}
+                            exportCSV
+                            csvFileName="guestlist.csv"
+                        
+            >
+                               
+            <TableHeaderColumn isKey dataField="name">
                 Name
             </TableHeaderColumn>
             <TableHeaderColumn dataField="address">
@@ -64,6 +67,7 @@ class List extends Component {
                 RSVP
             </TableHeaderColumn>
             </BootstrapTable>
+            
         </div>
         ); 
 
