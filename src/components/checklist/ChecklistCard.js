@@ -7,7 +7,7 @@ const ChecklistCard = props =>
         <h5>{props.time}</h5>
         <div className="card-body">
             <p className="card-text">{props.todo}</p>
-            <a onClick={() => props.handleClick(props.todo, props.username, props.completed)} className="btn btn-primary">{props.completed}</a>
+            <a onClick={() => props.handleClick(props.todo, props.username, props.completed, props._id)} className="btn btn-primary">{props.completed}</a>
         </div>
     </div>
 

@@ -117,6 +117,7 @@ const Budget = (props) => {
     // clear all items
     const clearItems = () => {
         setExpenses([])
+        localStorage.removeItem("expenses")
         handleAlert({ type: "danger", text: " All items deleted" })
 
     }
@@ -124,6 +125,7 @@ const Budget = (props) => {
     // handle delele
     const handleDelete = (id) => {
         let tempExpenses = expenses.filter(item => item.id !== id);
+        
         setExpenses(tempExpenses)
         handleAlert({ type: "danger", text: "item deleted" })
 
