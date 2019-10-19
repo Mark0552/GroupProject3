@@ -37,7 +37,13 @@ padding: none;
 position: absolute;
 background-size: cover;
 z-index: -1;
-
+}
+.hey1{
+  color: rgb(221, 167, 52);
+  font-size: 45px;
+  text-align: center;
+  margin: auto;
+  /* font-family: 'Satisfy', cursive !important; */
 }
 canvas{
   width:100%;
