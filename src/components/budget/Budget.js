@@ -5,7 +5,8 @@ import ExpenseList from './ExpenseList'
 import Alert from './Alert'
 import uuid from "uuid/v4";
 import Particles from 'react-particles-js';
-import axios from 'axios'
+import axios from 'axios';
+import sample from '../Images/weddingVideoBudget2.mp4';
 // localStorage.getItem('item.name');
 // localStorage.setItem('item.name')
 
@@ -140,9 +141,9 @@ const Budget = (props) => {
     }
 
     return <div>
-        <Particles
-            params={particleOpt}
-        />
+       <video className='videoTag' autoPlay loop muted>
+            <source src={sample} type='video/mp4' />           
+        </video>
         {alert.show && <Alert type={alert.type} text={alert.text} />}
         <Alert />
         <h1>Budget</h1>

@@ -12,9 +12,32 @@ body {
   box-sizing: border-box;
 }
 body {
-  background: rgb(230, 150, 163) !important;
-  color: var(--mainBlack);
-  font-family: "Roboto", sans-serif;
+  
+  background:rgb(246, 191, 200) !important;
+  color: rgb(7, 3, 3) !important;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 18px !important;
+  font-weight: bolder !important;
+}
+h1{
+  font-weight: bolder !important;
+}
+p{
+  font-weight: bolder !important;
+  /* font-size: 10px !important; */
+}
+.videoTag{
+  opacity: 0.8;
+  margin: 60px -1200px;
+  height: 200%;
+  width: 200%;
+/* float: left; */
+top: 0;
+padding: none;
+position: absolute;
+background-size: cover;
+z-index: -1;
+
 }
 canvas{
   width:100%;

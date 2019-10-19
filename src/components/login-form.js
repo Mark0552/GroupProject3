@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+import axios from 'axios';
+import sample3 from './Images/weddingVideoHome2.mp4'
 
 class LoginForm extends Component {
     constructor() {
@@ -59,6 +60,9 @@ class LoginForm extends Component {
         } else {
             return (
                 <div className="container">
+                    <video className='videoTag' autoPlay loop muted>
+                            <source src={sample3} type='video/mp4' />
+                        </video>
                     <h4>Login</h4>
                     <form className="form-horizontal">
                         <div className="form-group">

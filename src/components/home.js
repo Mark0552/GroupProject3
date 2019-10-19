@@ -1,14 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import sample2 from './Images/weddingVideoHome2.mp4';
+import './budget/Budget.css'
 
 class Home extends Component {
-    constructor() {
-        super()
-    }
+  constructor() {
+    super()
+  }
 
-    render() {        
-        return (
-            <div> 
-            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+  render() {
+    return (
+      <div>
+        <video className='videoTag' autoPlay loop muted>
+          <source src={sample2} type='video/mp4' />
+        </video>
+
+        <div style={{ position: 'absolute', fontFamily: 'Satisfy' }} className="hey1">
+          <h1>Congratulations!</h1>
+          <p>Just got engaged and don't know where to start? <br />
+            Here you will find a Checklist of to do things, keep track of your Budget and Guest List.</p>
+        </div>
+        {/* <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                 <ol className="carousel-indicators">
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -41,10 +52,10 @@ class Home extends Component {
                   <span className="carousel-control-next-icon" aria-hidden="true"></span>
                   <span className="sr-only">Next</span>
                 </a>
-              </div>                 
-            </div>
-        );
-    }
+              </div>                  */}
+      </div>
+    );
+  }
 }
 
 export default Home;

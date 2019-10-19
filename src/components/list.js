@@ -1,6 +1,7 @@
 import React, { Component } from "react"; 
 import {BootstrapTable, TableHeaderColumn} from "react-bootstrap-table"; 
 import "../../node_modules/react-bootstrap-table/css/react-bootstrap-table.css"; 
+import sample1 from './Images/weddingVideoGuest1.mp4'
 
 function onInsertRow(row) {
 let newRow = "; "
@@ -37,6 +38,9 @@ class List extends Component {
 
         return(
             <div>
+                <video className='videoTag' autoPlay loop muted>
+                    <source src={sample1} type='video/mp4' />
+                </video>
             <h1>Guest List</h1>    
             <BootstrapTable data={this.props.data}
                                 selectRow={selectRowProp}
