@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 // components
 import Signup from './components/sign-up'
+import sample2 from './components/Images/weddingVideoHome2.mp4';
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar'
 import Home from './components/home'
@@ -22,7 +23,8 @@ class App extends Component {
       username: null,
       todos: [],
       haveTodos: [],
-      doneTodos: []
+      doneTodos: [],
+      redirectTo: null
 
     }
 
@@ -56,7 +58,8 @@ class App extends Component {
           loggedIn: true,
           _id: user._id,
           username: user.username,
-          todos: user.todos
+          todos: user.todos,
+
         })
         
       } else {
@@ -69,8 +72,8 @@ class App extends Component {
     })
   }
 
-  handleClick = (todo, username, completed) => {
-    axios.put('/user/' , {
+  handleClick = (todo, username, completed, _id) => {
+    axios.put('/user/'+ _id , {
       username: username,  
       todo: todo,
       completed: completed,
@@ -114,9 +117,9 @@ class App extends Component {
 
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
-        {this.state.loggedIn &&
+        {/* {this.state.loggedIn &&
           <p>Logged in as {this.state.username}</p>
-        }
+        } */}
         {/* Routes to different components */}
         <Route
           exact path="/"
@@ -136,6 +139,10 @@ class App extends Component {
         <Route
           path="/WeddingCheckList"
           render={() =>
+            <div>
+            <video className='videoTag' autoPlay loop muted>
+          <source src={sample2} type='video/mp4' />
+        </video>
             <div className="row">
               <div className="col">To Do
               {this.state.haveTodos.map(todos => (
@@ -154,11 +161,13 @@ class App extends Component {
                   key={todos.todo}                  
                   todo={todos.todo}
                   time={todos.time}
+                  _id={this.state._id}
                   completed={todos.completed}
                   handleClick={this.handleClick}
                 />
               ))}
               </div>
+            </div>
             </div>
 
           }

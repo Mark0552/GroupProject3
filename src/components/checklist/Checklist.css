@@ -8,3 +8,6 @@
     display: table;
     clear: both;
 }
+#card{
+  padding: 3px;
+}

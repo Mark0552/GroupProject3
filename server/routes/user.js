@@ -7,7 +7,7 @@ const passport = require('../passport')
 router.post('/', (req, res) => {
     console.log('user signup');
 
-    const { username, password, todos } = req.body
+    const { username, password, todos, redirectTo } = req.body
     // ADD VALIDATION
     User.findOne({ username: username }, (err, user) => {
         if (err) {
@@ -43,7 +43,7 @@ router.post('/budget/', (req, res) => {
         });
 })
 
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
 
     var index = -1;
     var filteredObj = req.todos.find(function (item, i) {
@@ -53,26 +53,25 @@ router.put('/', (req, res) => {
         }
     });
 
-    User.findOne({ usename: req.username }, (err, thisUser) => {
-        if (completed === "Completed") {
-            thisUser.Update({ todos: this.todos[index] }, function (err, thistodo) {
-                thistodo.completed = "Not Complete";
-                thistodo.save(function (err) {
-                    console.log("ERROR");
-                })
+    if (completed === "Completed") {
+        User.Update({ todos: todos[index] }, function (err, thistodo) {
+            thistodo.completed = "Not Complete";
+            thistodo.save(function (err) {
+                console.log("ERROR");
             })
-            res.json(thisUser);
-        } else {
-            thisUser.Update({ todos: this.todos[index] }, function (err, thistodo) {
-                thistodo.completed = "Completed";
-                thistodo.save(function (err) {
-                    console.log("ERROR");
-                })
+        })
+        res.json(thisUser);
+    } else {
+        User.Update({ todos: todos[index]}, function (err, thistodo) {
+            thistodo.completed = "Completed";
+            thistodo.save(function (err) {
+                console.log("ERROR");
             })
-            res.json(thisUser);
-        }
-    });
+        }); 
+        res.json(thisUser);
+    }
 });
+
 
 
 router.post(
